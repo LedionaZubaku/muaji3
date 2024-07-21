@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Card, Row, Col, Navbar, Nav, Spinner } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom'; // Import useParams for accessing route parameters
+import { Link, useParams } from 'react-router-dom';
 import './styles.css';
-import space from './space.jpg'; // Ensure this image path is correct
+import space from './space.jpg';
+import mockData from './mockData.json'; // Import mock data
 
 const Biography = () => {
-    const { id } = useParams(); // Access the route parameter :id
+    const { id } = useParams();
     const [people, setPeople] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchPeople = async () => {
             try {
-                // Change http to https
                 const response = await axios.get('https://api.open-notify.org/astros.json');
                 setPeople(response.data.people);
             } catch (error) {
                 console.error('Error fetching people data:', error);
+                setPeople(mockData.people); // Use mock data
+                setError('Unable to fetch data at the moment. Using mock data.');
             } finally {
                 setLoading(false);
             }
@@ -28,30 +31,19 @@ const Biography = () => {
 
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
-                <Container>
-                    <Navbar.Brand href="#home">ECLIPSE</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/services">Services</Nav.Link>
-                            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-                            <Nav.Link as={Link} to="/biography">Biography</Nav.Link>
-                            <Nav.Link as={Link} to="/ContactUs">Contact Us</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-
+            {/* ...Navbar code... */}
             <Container className="mt-4">
                 {loading ? (
                     <div className="text-center">
                         <Spinner animation="border" />
                     </div>
+                ) : error ? (
+                    <div className="text-center">
+                        <p>{error}</p>
+                    </div>
                 ) : (
                     <Row>
-                        {id ? ( // Render individual biography if :id is present
+                        {id ? (
                             <Col sm={12}>
                                 <Card>
                                     <Card.Img variant="top" src={space} className="img-fluid" style={{ maxHeight: '300px', objectFit: 'cover' }} />
@@ -63,7 +55,7 @@ const Biography = () => {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                        ) : ( // Render all biographies if :id is not present
+                        ) : (
                             people.map((person, index) => (
                                 <Col key={index} sm={12} md={6} lg={4} className="mb-4">
                                     <Card>
@@ -72,7 +64,7 @@ const Biography = () => {
                                             <Card.Text>
                                                 Craft: {person.craft}
                                             </Card.Text>
-                                            <Link to={`/biography/${index}`}>Read More</Link> {/* Link to individual biography */}
+                                            <Link to={`/biography/${index}`}>Read More</Link>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -81,7 +73,6 @@ const Biography = () => {
                     </Row>
                 )}
             </Container>
-
             <footer className="bg-dark text-white text-center py-3 mt-4">
                 <Container>
                     <p>Biography</p>

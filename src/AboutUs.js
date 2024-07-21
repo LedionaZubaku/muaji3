@@ -13,7 +13,7 @@ const AboutUs = () => {
     useEffect(() => {
         const fetchAstronauts = async () => {
             try {
-                const response = await axios.get('http://api.open-notify.org/astros.json');
+                const response = await axios.get('https://api.open-notify.org/astros.json'); // Changed to HTTPS
                 setAstronauts(response.data.people);
             } catch (error) {
                 console.error("Error fetching the astronauts data:", error);
@@ -33,7 +33,7 @@ const AboutUs = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/Home">Home</Nav.Link> 
+                            <Nav.Link as={Link} to="/Home">Home</Nav.Link> 
                             <Nav.Link as={Link} to="/Services">Services</Nav.Link>
                             <Nav.Link as={Link} to="/AboutUs">About Us</Nav.Link>
                             <Nav.Link as={Link} to="/Biography">Biography</Nav.Link>

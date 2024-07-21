@@ -1,0 +1,46 @@
+/* src/styles.css */
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #ffffff;
+  }
+  
+  .home-container {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .fadeIn {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease forwards;
+  }
+  
+  @keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+    }
+  }  
+  /* styles.css */
+
+.intro-video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  margin-bottom: 20px;
+}
+
+.intro-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

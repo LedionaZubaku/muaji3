@@ -38,11 +38,11 @@ const ContactUs = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/services">Services</Nav.Link>
-                            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-                            <Nav.Link as={Link} to="/biography">Biography</Nav.Link>
-                            <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
+                            <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/Services">Services</Nav.Link>
+                            <Nav.Link as={Link} to="/Aboutus">About Us</Nav.Link>
+                            <Nav.Link as={Link} to="/Biography">Biography</Nav.Link>
+                            <Nav.Link as={Link} to="/Contactus">Contact Us</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

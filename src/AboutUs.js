@@ -13,7 +13,8 @@ const AboutUs = () => {
     useEffect(() => {
         const fetchAstronauts = async () => {
             try {
-                const response = await axios.get('http://api.open-notify.org/astros.json');
+                // Change http to https
+                const response = await axios.get('https://api.open-notify.org/astros.json');
                 setAstronauts(response.data.people);
             } catch (error) {
                 console.error("Error fetching the astronauts data:", error);

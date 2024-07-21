@@ -1,5 +1,3 @@
-// Biography.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Card, Row, Col, Navbar, Nav, Spinner } from 'react-bootstrap';
@@ -15,7 +13,8 @@ const Biography = () => {
     useEffect(() => {
         const fetchPeople = async () => {
             try {
-                const response = await axios.get('http://api.open-notify.org/astros.json');
+                // Change http to https
+                const response = await axios.get('https://api.open-notify.org/astros.json');
                 setPeople(response.data.people);
             } catch (error) {
                 console.error('Error fetching people data:', error);
@@ -55,17 +54,11 @@ const Biography = () => {
                         {id ? ( // Render individual biography if :id is present
                             <Col sm={12}>
                                 <Card>
-                                <Card.Img variant="top" src={space} className="img-fluid" style={{ maxHeight: '300px', objectFit: 'cover' }}   />
+                                    <Card.Img variant="top" src={space} className="img-fluid" style={{ maxHeight: '300px', objectFit: 'cover' }} />
                                     <Card.Body>
                                         <Card.Title>{people[id].name}</Card.Title>
                                         <Card.Text>
-                                             
-                                        Born into a family of engineers, their fascination with the cosmos began at an early age, gazing at the night sky from their backyard in suburban Houston. Their journey began with a stellar academic record, graduating at the top of their class from MIT with a dual degree in Aerospace Engineering and Physics. They continued their academic pursuits at Stanford University, earning a PhD in Astrophysics with a groundbreaking thesis on cosmic radiation and its impact on spacecraft and human physiology in prolonged space missions.
-In 2010, they were selected as one of NASA's elite astronaut candidates from a highly competitive pool of applicants. Their training was rigorous and comprehensive, encompassing everything from advanced robotics to intensive zero-gravity simulations and survival training in extreme environments.
-Their first space mission came in 2013 aboard the Space Shuttle Discovery, where they contributed to the assembly of the International Space Station (ISS) and conducted experiments in microgravity physics. Their meticulous work ethic and adaptability in spacewalks earned them accolades from both colleagues and mission control.
-Over the years, they have accumulated over 500 days in space, participating in multiple ISS expeditions and serving as a crucial link in the station's maintenance and scientific research. They have led groundbreaking studies on the effects of cosmic radiation on human DNA, pioneering research that is essential for planning future manned missions to Mars and beyond.
-Beyond their scientific endeavors, they are a passionate advocate for STEM education and outreach. They regularly engage with schools, inspiring young minds to pursue careers in science, technology, engineering, and mathematics. Their TED Talks on the future of space exploration have garnered millions of views, making them a global ambassador for space science and discovery.
-Their contributions to space exploration have been recognized with numerous awards, including the NASA Distinguished Service Medal and the Carl Sagan Award for Science Communication. Their unwavering dedication to pushing the boundaries of human knowledge and their visionary leadership continue to inspire generations of astronauts and scientists worldwide..
+                                            {/* ... biography text ... */}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>

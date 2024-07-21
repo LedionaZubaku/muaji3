@@ -1,6 +1,6 @@
 // src/Home.js
 import React from 'react';
-import { Navbar, Nav, Container, Carousel, Accordion, Card, Row, Col, Footer } from 'react-bootstrap';
+import { Navbar, Nav, Container, Carousel, Accordion, Card, Row, Col,  } from 'react-bootstrap';
 import './styles.css';
 import foto1 from './foto1.jpg';
 import foto2 from './foto2.jpg';
